@@ -1,0 +1,121 @@
+---
+main_topsize: 0.2 #percent coverage of the poster
+main_bottomsize: 0.1
+column_numbers: 3
+#ESSENTIALS
+title: '**A Compositional Framework for Scientific Meta-Modeling**'
+title_textsize: "90pt"
+author:
+  - name: '**Micah Halter**'
+    affil: 1
+    main: true
+    orcid: '000-0002-0484-971X'
+    email: Micah.Halter@gtri.gatech.edu
+  - name: Kun Cao
+    affil: 1
+    main: true
+    email: 'Kun.Cao@gtri.gatech.edu'
+  - name: James Fairbanks
+    affil: 1
+    main: true
+    email: 'James.Fairbanks@gtri.gatech.edu'
+affiliation:
+  - num: 1
+    address: Georgia Tech Research Institute
+primary_colour: "#101B49"
+secondary_colour: "#101B49"
+main_fontfamily: "Rasa"
+main_findings:
+  - '**Universal Model Representation Enables Automatic Composition of Scientific Models Across Domains**'
+logoleft_name: 'figs/semanticmodels.png'
+logoright_name: 'figs/gtri.png'
+<!-- logocenter_name: https&#58;//raw.githubusercontent.com/brentthorne/posterdown/master/images/qr-code-black.png -->
+output:
+  posterdown::posterdown_betterport:
+    self_contained: false
+    pandoc_args: --mathjax
+    number_sections: false
+bibliography: refs.bib
+link-citations: true
+---
+
+<style>
+.outer {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.main p {
+    margin-left: 0em;
+}
+#main-img-left {
+    width: 35%;
+    bottom: 1.25in;
+}
+#main-img-right {
+    width: 30%;
+    bottom: 1.25in;
+}
+</style>
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      tidy = FALSE,
+                      message = FALSE,
+                      fig.align = 'center',
+                      out.width = "100%")
+options(knitr.table.format = "html")
+```
+
+# Introduction
+
+Scientific progress comes from adapting and extending models from prior work to address new problems. We propose `SemanticModels.jl`, a category theory-based framework for defining meta-modeling tasks and semantic information extraction.
+
+## Objectives
+
+1. Convert scientific models to a universal wiring diagram representation [@fong];
+1. Use this representation to augment and compose these models at domain-level semantics;
+1. Generate executable code and visualize the results.
+
+# Methods
+
+We leveraged techniques from static and dynamic program analysis to process executable versions of scientific models to extract the mathematical representation of the Lotka-Volterra Predator-Prey [@volterra] and the MacDonald Ross Disease Model [@ross]. Next we performed meta-modeling tasks defined as domain specific transformations to augment and compose the two models. Finally, we can visualize the new model as well as generate executable code and visualize the simulation's results.
+
+# Results
+
+Figures \@ref(fig:volterra) and \@ref(fig:ross) show the universal, domain specific wiring diagrams that domain scientists can manipulate to create new models. We augmented the Lotka-Volterra model from Figure \@ref(fig:volterra) to model mutual predation and composed it with the Ross Malaria model from Figure \@ref(fig:ross) to get a model that simulates both, shown in Figure \@ref(fig:volterraross).
+Finally we generated the code to simulate the new model, and the results are shown in Figures \@ref(fig:results) and \@ref(fig:resultszoom).
+
+
+```{r, volterra, fig.cap='**Top**: Lotka-Volterra predator-prey model represented as a wiring diagram;<br />**Bottom**: Lotka-Volterra Predator-Prey Model represented as a structured mathematical structure.', out.width="90%"}
+knitr::include_graphics("figs/lotka-volterra.png")
+```
+
+```{r, ross, fig.cap='Ross Malaria model represented as a wiring diagram.', out.width="90%"}
+knitr::include_graphics("figs/malaria.png")
+```
+
+```{r, volterraross, fig.cap='**Top**: The generated Lotka-Volterra and Malaria disease spread model as a wiring diagram;<br />**Bottom**: The generated Lotka-Volterra and Malaria disease spread model as a structured mathematical structure.', out.width="90%"}
+knitr::include_graphics("figs/volterra-ross.png")
+```
+
+```{r, results, fig.cap='The results of the mutual predation and Malaria model  showing the predator prey interaction between the mosquitoes and birds (purple and yellow lines respectively)', out.width="95%"}
+knitr::include_graphics("figs/result_graph.png")
+```
+
+```{r, resultszoom, fig.cap='Zooming into the beginning of the graph in Figure \\@ref(fig:results) shows the initial role Malaria had on the system.', out.width="95%"}
+knitr::include_graphics("figs/result_graph_zoom.png")
+```
+
+# Conclusions
+
+1. `SemanticModels.jl` provides a framework for scientists to easily augment and transform existing scientific models.
+1. Using a universal representation allows for models to be easily composed across scientific domains.
+1. New models can automatically generate executable code and produce verifiable results.
+1. Our representation can be adapted to curate more types of models that can then be used in the same workflow.
+
+# Acknowledgments
+
+This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00111990008.
+
+# References

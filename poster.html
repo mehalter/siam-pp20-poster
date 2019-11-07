@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>A Compositional Framework for Scientific Meta-Modeling</title>
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 36in 48in;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 36in;
+height: 48in;
+text-align: justify;
+font-size: 45px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r {
+background-color: #dddddd40;
+border-radius: 4mm;
+padding: 4mm;
+width: 75%;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+code.sourceCode.r{
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #101B4924;
+color: #101B49;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #101B4920;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 36in;
+height: calc(48in *  (1 - 0.2 - 0.1 - 0.01) );
+-webkit-column-count: 3; /* Chrome, Safari, Opera */
+-moz-column-count: 3; /* Firefox */
+column-count: 3;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(48in *  0.2 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #101B49;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #101B49;
+}
+#title {
+font-size: 90pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color: #101B49;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #101B49;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #101B4975 33%,
+      #101B49 50%,
+      #101B4975 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 36in;
+height: calc(48in * 0.2);
+position: absolute;
+background-color: #101B49;
+color: #ffffff90;
+font-family: Rasa;
+background-image: linear-gradient(#101B49 50%,#101B49);
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffff90;
+}
+#main-img-left {
+width: 10%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+#main-img-center {
+width: 10%;
+left: calc(36in * 0.45);
+bottom: 0.5in;
+position: absolute;
+}
+#main-img-right {
+width: 10%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+font-size: 150px;
+font-family: Rasa;
+text-align: center;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 1em;
+}
+.fab {
+color: #00000030;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000030;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000030;
+font-size: 35px;
+}
+.envelope {
+color: #00000030;
+font-size: 5px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 36in;
+height: 48in;
+padding: 0cm;
+}
+.main_bottom {
+width: 36in;
+height: calc(48in * 0.1);
+margin-top: calc(48in * (1 - 0.1));
+position: absolute;
+background-color: #101B49;
+background-image: linear-gradient(#101B49 10%, #101B49);
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+<h1 id="title"><strong>A Compositional Framework for Scientific Meta-Modeling</strong></h1><br>
+<h3 id="author" class="author">
+
+<strong>Micah Halter</strong><sup> 1, <a class="orcid" href="https://orcid.org/000-0002-0484-971X"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:Micah.Halter@gtri.gatech.edu" class="email">Micah.Halter@gtri.gatech.edu</a> <br>
+ Kun Cao<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:Kun.Cao@gtri.gatech.edu" class="email">Kun.Cao@gtri.gatech.edu</a> <br>
+ James Fairbanks<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:James.Fairbanks@gtri.gatech.edu" class="email">James.Fairbanks@gtri.gatech.edu</a> <br>
+</h3>
+
+<h5 id="author_extra", class="author_extra">
+  </h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Georgia Tech Research Institute
+</p>
+</div>
+
+<style>
+.outer {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.main p {
+    margin-left: 0em;
+}
+#main-img-left {
+    width: 35%;
+    bottom: 1.25in;
+}
+#main-img-right {
+    width: 30%;
+    bottom: 1.25in;
+}
+</style>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Scientific progress comes from adapting and extending models from prior work to address new problems. We propose <code>SemanticModels.jl</code>, a category theory-based framework for defining meta-modeling tasks and semantic information extraction.</p>
+<div id="objectives" class="section level2">
+<h2>Objectives</h2>
+<ol style="list-style-type: decimal">
+<li>Convert scientific models to a universal wiring diagram representation <span class="citation">(Fong <a href="#ref-fong" role="doc-biblioref">2018</a>)</span>;</li>
+<li>Use this representation to augment and compose these models at domain-level semantics;</li>
+<li>Generate executable code and visualize the results.</li>
+</ol>
+</div>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>We leveraged techniques from static and dynamic program analysis to process executable versions of scientific models to extract the mathematical representation of the Lotka-Volterra Predator-Prey <span class="citation">(Volterra <a href="#ref-volterra" role="doc-biblioref">1926</a>)</span> and the MacDonald Ross Disease Model <span class="citation">(Smith <a href="#ref-ross" role="doc-biblioref">2012</a>)</span>. Next we performed meta-modeling tasks defined as domain specific transformations to augment and compose the two models. Finally, we can visualize the new model as well as generate executable code and visualize the simulation’s results.</p>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>Figures <a href="#fig:volterra">1</a> and <a href="#fig:ross">2</a> show the universal, domain specific wiring diagrams that domain scientists can manipulate to create new models. We augmented the Lotka-Volterra model from Figure <a href="#fig:volterra">1</a> to model mutual predation and composed it with the Ross Malaria model from Figure <a href="#fig:ross">2</a> to get a model that simulates both, shown in Figure <a href="#fig:volterraross">3</a>.
+Finally we generated the code to simulate the new model, and the results are shown in Figures <a href="#fig:results">4</a> and <a href="#fig:resultszoom">5</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:volterra"></span>
+<img src="figs/lotka-volterra.png" alt="**Top**: Lotka-Volterra predator-prey model represented as a wiring diagram;&lt;br /&gt;**Bottom**: Lotka-Volterra Predator-Prey Model represented as a structured mathematical structure." width="90%" />
+<p class="caption">
+Figure 1: <strong>Top</strong>: Lotka-Volterra predator-prey model represented as a wiring diagram;<br /><strong>Bottom</strong>: Lotka-Volterra Predator-Prey Model represented as a structured mathematical structure.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:ross"></span>
+<img src="figs/malaria.png" alt="Ross Malaria model represented as a wiring diagram." width="90%" />
+<p class="caption">
+Figure 2: Ross Malaria model represented as a wiring diagram.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:volterraross"></span>
+<img src="figs/volterra-ross.png" alt="**Top**: The generated Lotka-Volterra and Malaria disease spread model as a wiring diagram;&lt;br /&gt;**Bottom**: The generated Lotka-Volterra and Malaria disease spread model as a structured mathematical structure." width="90%" />
+<p class="caption">
+Figure 3: <strong>Top</strong>: The generated Lotka-Volterra and Malaria disease spread model as a wiring diagram;<br /><strong>Bottom</strong>: The generated Lotka-Volterra and Malaria disease spread model as a structured mathematical structure.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:results"></span>
+<img src="figs/result_graph.png" alt="The results of the mutual predation and Malaria model  showing the predator prey interaction between the mosquitoes and birds (purple and yellow lines respectively)" width="95%" />
+<p class="caption">
+Figure 4: The results of the mutual predation and Malaria model showing the predator prey interaction between the mosquitoes and birds (purple and yellow lines respectively)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:resultszoom"></span>
+<img src="figs/result_graph_zoom.png" alt="Zooming into the beginning of the graph in Figure \@ref(fig:results) shows the initial role Malaria had on the system." width="95%" />
+<p class="caption">
+Figure 5: Zooming into the beginning of the graph in Figure <a href="#fig:results">4</a> shows the initial role Malaria had on the system.
+</p>
+</div>
+</div>
+<div id="conclusions" class="section level1">
+<h1>Conclusions</h1>
+<ol style="list-style-type: decimal">
+<li><code>SemanticModels.jl</code> provides a framework for scientists to easily augment and transform existing scientific models.</li>
+<li>Using a universal representation allows for models to be easily composed across scientific domains.</li>
+<li>New models can automatically generate executable code and produce verifiable results.</li>
+<li>Our representation can be adapted to curate more types of models that can then be used in the same workflow.</li>
+</ol>
+</div>
+<div id="acknowledgments" class="section level1">
+<h1>Acknowledgments</h1>
+<p>This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00111990008.</p>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-fong">
+<p>Fong, Brendan. 2018. “Seven Sketches in Compositionality: An Invitation to Applied Category Theory.”</p>
+</div>
+<div id="ref-ross">
+<p>Smith, Katherine E. AND Hay, David L. AND Battle. 2012. “Ross, Macdonald, and a Theory for the Dynamics and Control of Mosquito-Transmitted Pathogens.” <em>PLOS Pathogens</em> 8 (4): 1–13. <a href="https://doi.org/10.1371/journal.ppat.1002588">https://doi.org/10.1371/journal.ppat.1002588</a>.</p>
+</div>
+<div id="ref-volterra">
+<p>Volterra, Vito. 1926. “Variazioni E Fluttuazioni Del Numero d’individui in Specie Animali Conviventi.” <em>Memoria Della Reale Accademia Nazionale Dei Lincei. Ser. VI, Vol. 2.</em></p>
+</div>
+</div>
+</div>
+
+</div>
+<div class="main">
+<p><strong>Universal Model Representation Enables Automatic Composition of Scientific Models Across Domains</strong></p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=figs/semanticmodels.png>
+<img id="main-img-center" src=>
+<img id="main-img-right" src=figs/gtri.png>
+</div>
+</div>
+
+
+
+</body>
+</html>
