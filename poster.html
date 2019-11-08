@@ -8,7 +8,7 @@
 
 
 
-<title>A Compositional Framework for Scientific Meta-Modeling</title>
+<title>poster.utf8</title>
 
 
 
@@ -364,22 +364,18 @@ span > #tab:mytable {
 
 <div class="column outer">
 <div class="section">
-<h1 id="title"><strong>A Compositional Framework for Scientific Meta-Modeling</strong></h1><br>
+
 <h3 id="author" class="author">
 
 <strong>Micah Halter</strong><sup> 1, <a class="orcid" href="https://orcid.org/000-0002-0484-971X"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup><br>
 
 <a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:Micah.Halter@gtri.gatech.edu" class="email">Micah.Halter@gtri.gatech.edu</a> <br>
- Kun Cao<sup> 1</sup><br>
-
-<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:Kun.Cao@gtri.gatech.edu" class="email">Kun.Cao@gtri.gatech.edu</a> <br>
- James Fairbanks<sup> 1</sup><br>
-
-<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:James.Fairbanks@gtri.gatech.edu" class="email">James.Fairbanks@gtri.gatech.edu</a> <br>
-</h3>
+  </h3>
 
 <h5 id="author_extra", class="author_extra">
-  </h5>
+ Kun Cao<sup>1</sup>
+ James Fairbanks<sup>1</sup>
+</h5>
 
 
 <p id="affiliation" class="affiliation">
@@ -388,10 +384,10 @@ span > #tab:mytable {
 </div>
 
 <style>
-.outer {
-    padding-top: 2em;
-    padding-bottom: 2em;
-}
+<!-- .outer { -->
+<!--     padding-top: 2em; -->
+<!--     padding-bottom: 2em; -->
+<!-- } -->
 .main p {
     margin-left: 0em;
 }
@@ -406,15 +402,12 @@ span > #tab:mytable {
 </style>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>Scientific progress comes from adapting and extending models from prior work to address new problems. We propose <code>SemanticModels.jl</code>, a category theory-based framework for defining meta-modeling tasks and semantic information extraction.</p>
-<div id="objectives" class="section level2">
-<h2>Objectives</h2>
+<p>Scientific progress comes from adapting and extending models from prior work to address new problems. The task of modifying existing source code and performing semantically sound model fusion can be difficult as the models scale, and become more complex. We propose <code>SemanticModels.jl</code>, a category theory-based framework for defining meta-modeling tasks and semantic information extraction. Our objectives are threefold:</p>
 <ol style="list-style-type: decimal">
 <li>Convert scientific models to a universal wiring diagram representation <span class="citation">(Fong <a href="#ref-fong" role="doc-biblioref">2018</a>)</span>;</li>
 <li>Use this representation to augment and compose these models at domain-level semantics;</li>
-<li>Generate executable code and visualize the results.</li>
+<li>Generate executable code and visualize results.</li>
 </ol>
-</div>
 </div>
 <div id="methods" class="section level1">
 <h1>Methods</h1>
@@ -422,38 +415,50 @@ span > #tab:mytable {
 </div>
 <div id="results" class="section level1">
 <h1>Results</h1>
-<p>Figures <a href="#fig:volterra">1</a> and <a href="#fig:ross">2</a> show the universal, domain specific wiring diagrams that domain scientists can manipulate to create new models. We augmented the Lotka-Volterra model from Figure <a href="#fig:volterra">1</a> to model mutual predation and composed it with the Ross Malaria model from Figure <a href="#fig:ross">2</a> to get a model that simulates both, shown in Figure <a href="#fig:volterraross">3</a>.
-Finally we generated the code to simulate the new model, and the results are shown in Figures <a href="#fig:results">4</a> and <a href="#fig:resultszoom">5</a>.</p>
+<p>Figures <a href="#fig:volterra">2</a> and <a href="#fig:ross">3</a> show the universal, domain specific wiring diagrams that domain scientists can manipulate to create new models. Figure <a href="#fig:ross">3</a> also illustrates the amount of math that is contained in the simple Malaria wiring diagram.
+These wiring diagrams allow us to perform model augmentation and fusion at the semantic level, and the fusion of the differential equations is handled automatically.
+We then augmented the Lotka-Volterra model from Figure <a href="#fig:volterra">2</a> to model mutual predation and composed it with the Ross Malaria model from Figure <a href="#fig:ross">3</a> to get a model that simulates both, shown in Figure <a href="#fig:volterraross">4</a>.
+Finally we generated the code to simulate the new model, and the results are shown in Figures <a href="#fig:results">5</a> and <a href="#fig:resultszoom">6</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:volterradiffeq"></span>
+<img src="figs/volterra-diffeq.png" alt="The full set of differential equations of the Lotka-Volterra model that we want to represent as a mathematical structure grounded in semantic knowledge." width="80%" />
+<p class="caption">
+Figure 1: The full set of differential equations of the Lotka-Volterra model that we want to represent as a mathematical structure grounded in semantic knowledge.
+</p>
+</div>
 <div class="figure" style="text-align: center"><span id="fig:volterra"></span>
-<img src="figs/lotka-volterra.png" alt="**Top**: Lotka-Volterra predator-prey model represented as a wiring diagram;&lt;br /&gt;**Bottom**: Lotka-Volterra Predator-Prey Model represented as a structured mathematical structure." width="90%" />
+<img src="figs/lotka-volterra.png" alt="**Top**: Lotka-Volterra predator-prey model represented as a semantically rich wiring diagram;&lt;br /&gt;**Bottom**: Lotka-Volterra Predator-Prey Model represented as a structured mathematical object" width="95%" />
 <p class="caption">
-Figure 1: <strong>Top</strong>: Lotka-Volterra predator-prey model represented as a wiring diagram;<br /><strong>Bottom</strong>: Lotka-Volterra Predator-Prey Model represented as a structured mathematical structure.
+Figure 2: <strong>Top</strong>: Lotka-Volterra predator-prey model represented as a semantically rich wiring diagram;<br /><strong>Bottom</strong>: Lotka-Volterra Predator-Prey Model represented as a structured mathematical object
 </p>
 </div>
+<p><br /></p>
 <div class="figure" style="text-align: center"><span id="fig:ross"></span>
-<img src="figs/malaria.png" alt="Ross Malaria model represented as a wiring diagram." width="90%" />
+<img src="figs/malaria.png" alt="**Left**: Ross Malaria model represented as a wiring diagram;&lt;br /&gt;**Right**: The full set of differential equations represented by the wiring diagram on the left." width="49%" /><img src="figs/malaria-diffeq.png" alt="**Left**: Ross Malaria model represented as a wiring diagram;&lt;br /&gt;**Right**: The full set of differential equations represented by the wiring diagram on the left." width="49%" />
 <p class="caption">
-Figure 2: Ross Malaria model represented as a wiring diagram.
+Figure 3: <strong>Left</strong>: Ross Malaria model represented as a wiring diagram;<br /><strong>Right</strong>: The full set of differential equations represented by the wiring diagram on the left.
 </p>
 </div>
+<p><br /></p>
 <div class="figure" style="text-align: center"><span id="fig:volterraross"></span>
-<img src="figs/volterra-ross.png" alt="**Top**: The generated Lotka-Volterra and Malaria disease spread model as a wiring diagram;&lt;br /&gt;**Bottom**: The generated Lotka-Volterra and Malaria disease spread model as a structured mathematical structure." width="90%" />
+<img src="figs/volterra-ross.png" alt="**Top**: The generated Lotka-Volterra and Malaria disease spread model as a wiring diagram;&lt;br /&gt;**Bottom**: The generated Lotka-Volterra and Malaria disease spread model as a mathematical structure." width="90%" />
 <p class="caption">
-Figure 3: <strong>Top</strong>: The generated Lotka-Volterra and Malaria disease spread model as a wiring diagram;<br /><strong>Bottom</strong>: The generated Lotka-Volterra and Malaria disease spread model as a structured mathematical structure.
+Figure 4: <strong>Top</strong>: The generated Lotka-Volterra and Malaria disease spread model as a wiring diagram;<br /><strong>Bottom</strong>: The generated Lotka-Volterra and Malaria disease spread model as a mathematical structure.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:results"></span>
-<img src="figs/result_graph.png" alt="The results of the mutual predation and Malaria model  showing the predator prey interaction between the mosquitoes and birds (purple and yellow lines respectively)" width="95%" />
+<img src="figs/result_graph.png" alt="The results of the mutual predation and Malaria model  showing the predator-prey interaction between the mosquitoes and birds (purple and yellow lines respectively)" width="95%" />
 <p class="caption">
-Figure 4: The results of the mutual predation and Malaria model showing the predator prey interaction between the mosquitoes and birds (purple and yellow lines respectively)
+Figure 5: The results of the mutual predation and Malaria model showing the predator-prey interaction between the mosquitoes and birds (purple and yellow lines respectively)
 </p>
 </div>
+<p><br /></p>
 <div class="figure" style="text-align: center"><span id="fig:resultszoom"></span>
 <img src="figs/result_graph_zoom.png" alt="Zooming into the beginning of the graph in Figure \@ref(fig:results) shows the initial role Malaria had on the system." width="95%" />
 <p class="caption">
-Figure 5: Zooming into the beginning of the graph in Figure <a href="#fig:results">4</a> shows the initial role Malaria had on the system.
+Figure 6: Zooming into the beginning of the graph in Figure <a href="#fig:results">5</a> shows the initial role Malaria had on the system.
 </p>
 </div>
+<p><br /></p>
 </div>
 <div id="conclusions" class="section level1">
 <h1>Conclusions</h1>
@@ -485,7 +490,7 @@ Figure 5: Zooming into the beginning of the graph in Figure <a href="#fig:result
 
 </div>
 <div class="main">
-<p><strong>Universal Model Representation Enables Automatic Composition of Scientific Models Across Domains</strong></p>
+<p><strong>SemanticModels.jl: A Framework for Automatic Composition of Scientific Models Across Domains</strong></p>
 </div>
 <div class="main_bottom">
 <img id="main-img-left" src=figs/semanticmodels.png>
