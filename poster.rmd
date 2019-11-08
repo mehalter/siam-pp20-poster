@@ -9,7 +9,6 @@ author:
   - name: '**Micah Halter**'
     affil: 1
     main: true
-    orcid: '000-0002-0484-971X'
     email: Micah.Halter@gtri.gatech.edu
   - name: Kun Cao
     affil: 1
