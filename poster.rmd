@@ -39,10 +39,6 @@ link-citations: true
 ---
 
 <style>
-<!-- .outer { -->
-<!--     padding-top: 2em; -->
-<!--     padding-bottom: 2em; -->
-<!-- } -->
 .main p {
     margin-left: 0em;
 }
