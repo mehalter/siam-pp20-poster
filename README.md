@@ -7,14 +7,17 @@ Compile in R with `rmarkdown::render("poster.rmd")`
 ### Abstract
 
 Scientific progress comes from adapting and extending models from prior work to
-address new problems. However, the adaptation of this ideal workflow is
-difficult primarily because of the non-consistent representation of models.
+address new problems. However, this ideal workflow is difficult primarily because
+of the informal or inconsistent representation of models.
 This problem is exacerbated in fields outside of computer science where
-programmatic models are less structured. We propose `SemanticModels.jl`, a
+scientific models are formulated in informal languages. We propose `SemanticModels.jl`, a
 category theory-based framework for defining meta-modeling tasks such as model
-augmentation and semantic information extraction. We demonstrate the usage of
-`SemanticModels.jl` in threefolds: First, we demonstrate the conversion of
-predator-prey and infectious disease models to wiring diagram representations.
-Next, we show the extension and composability of the two models. Finally, we
-generate executable code of the new model that takes into account the spread of
-Malaria and predator-prey interactions and visualize the results.
+augmentation and model selection along with semantic information extraction. 
+We illustrate the major features of `SemanticModels.jl` including the representating
+models as wiring diagram, extending and composing models with algebraic operations, 
+and generating executable code of the resulting model. These features are demonstrated by
+constructing a model of mosquito borne illness in humans along with predator-prey dynamics 
+between mosquitos and birds to study the effects of predator species on the control of mosquito borne illnesses.
+Through the careful application of category theoretic ideas to scientific computing,
+general patterns in scientific modeling languages and frameworks can be axiomatized and these formalizations
+can be exploited to improve scientific computing research and development processes.
