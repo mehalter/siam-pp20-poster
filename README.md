@@ -13,9 +13,9 @@ This problem is exacerbated in fields outside of computer science where
 scientific models are formulated in informal languages. We propose `SemanticModels.jl`, a
 category theory-based framework for defining meta-modeling tasks such as model
 augmentation and model selection along with semantic information extraction. 
-We illustrate the major features of `SemanticModels.jl` including the representating
-models as wiring diagram, extending and composing models with algebraic operations, 
-and generating executable code of the resulting model. These features are demonstrated by
+We illustrate the major features of `SemanticModels.jl` including representating
+models as wiring diagrams, extending and composing models with algebraic operations, 
+and generating executable code of the resulting models. These features are demonstrated by
 constructing a model of mosquito borne illness in humans along with predator-prey dynamics 
 between mosquitos and birds to study the effects of predator species on the control of mosquito borne illnesses.
 Through the careful application of category theoretic ideas to scientific computing,
