@@ -1,5 +1,5 @@
 ---
-main_topsize: 0.2 #percent coverage of the poster
+main_topsize: 0.15 #percent coverage of the poster
 main_bottomsize: 0.1
 column_numbers: 3
 #ESSENTIALS
@@ -80,6 +80,8 @@ Figures \@ref(fig:volterra) and \@ref(fig:ross) show the universal, domain speci
 These wiring diagrams allow us to perform model augmentation and fusion at the semantic level, and the fusion of the differential equations is handled automatically.
 We then augmented the Lotka-Volterra model from Figure \@ref(fig:volterra) to model mutual predation and composed it with the Ross Malaria model from Figure \@ref(fig:ross) to get a model that simulates both, shown in Figure \@ref(fig:volterraross).
 Finally we generated the code to simulate the new model, and the results are shown in Figures \@ref(fig:results) and \@ref(fig:resultszoom).
+
+<br />
 
 ```{r, volterradiffeq, fig.cap='The full set of differential equations of the Lotka-Volterra model that we want to represent as a mathematical structure grounded in semantic knowledge.', out.width="80%"}
 knitr::include_graphics("figs/volterra-diffeq.png")

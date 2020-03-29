@@ -15,6 +15,7 @@
 
 
 
+
 <!--
 Font-awesome icons ie github or twitter
 -->
@@ -124,7 +125,7 @@ padding: 0px;
 }
 .outer {
 width: 36in;
-height: calc(48in *  (1 - 0.2 - 0.1 - 0.01) );
+height: calc(48in *  (1 - 0.15 - 0.1 - 0.01) );
 -webkit-column-count: 3; /* Chrome, Safari, Opera */
 -moz-column-count: 3; /* Firefox */
 column-count: 3;
@@ -145,7 +146,7 @@ column-rule-style: none;
 column-rule-color: black;
 background-color: #ffffff;
 font-family: Rasa;
-margin-top: calc(48in *  0.2 );
+margin-top: calc(48in *  0.15 );
 padding-top: 1em;
 padding-bottom: 1em;
 }
@@ -238,7 +239,7 @@ text-align: left;
 }
 .main {
 width: 36in;
-height: calc(48in * 0.2);
+height: calc(48in * 0.15);
 position: absolute;
 background-color: #101B49;
 color: #ffffff90;
@@ -415,6 +416,7 @@ span > #tab:mytable {
 These wiring diagrams allow us to perform model augmentation and fusion at the semantic level, and the fusion of the differential equations is handled automatically.
 We then augmented the Lotka-Volterra model from Figure <a href="#fig:volterra">2</a> to model mutual predation and composed it with the Ross Malaria model from Figure <a href="#fig:ross">3</a> to get a model that simulates both, shown in Figure <a href="#fig:volterraross">4</a>.
 Finally we generated the code to simulate the new model, and the results are shown in Figures <a href="#fig:results">5</a> and <a href="#fig:resultszoom">6</a>.</p>
+<p><br /></p>
 <div class="figure" style="text-align: center"><span id="fig:volterradiffeq"></span>
 <img src="figs/volterra-diffeq.png" alt="The full set of differential equations of the Lotka-Volterra model that we want to represent as a mathematical structure grounded in semantic knowledge." width="80%" />
 <p class="caption">
@@ -469,9 +471,9 @@ Figure 6: Zooming into the beginning of the graph in Figure <a href="#fig:result
 <h1>Acknowledgments</h1>
 <p>This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00111990008.</p>
 </div>
-<div id="references" class="section level1 unnumbered">
+<div id="references" class="section level1">
 <h1>References</h1>
-<div id="refs" class="references">
+<div id="refs" class="references hanging-indent">
 <div id="ref-fong">
 <p>Fong, Brendan. 2018. “Seven Sketches in Compositionality: An Invitation to Applied Category Theory.”</p>
 </div>
